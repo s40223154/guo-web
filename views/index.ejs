@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css' /> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.1/js/jquery.tablesorter.min.js" charset="utf-8"></script>
+  </script>
+</head>
+<!--
+html, js, css
+-->
+
+<body>
+  <div id="chart"></div>
+  <main>
+
+      <h1>Sea of Thieves Cheatsheet</h1>
+
+      <table>
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Grid</th>
+                  <th>Type</th>
+                  <th>Region</th>
+                  <th>Chickens</th>
+                  <th>Pigs</th>
+                  <th>Snakes</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td data-label="Name">
+                      Ancient Spire Outpost
+                  </td>
+                  <td data-label="Grid">
+                      V-21
+                  </td>
+                  <td data-label="Type">
+                      Outpost
+                  </td>
+                  <td data-label="Region">
+                      The Ancient Isles
+                  </td>
+                  <td data-label="Chickens">
+                      <span class="no">&#10007;</span>
+                  </td>
+                  <td data-label="Pigs">
+                      <span class="no">&#10007;</span>
+                  </td>
+                  <td data-label="Snakes">
+                      <span class="no">&#10007;</span>
+                  </td>
+              </tr>
+
+          </tbody>
+      </table>
+
+  </main>
+
+  <footer>
+      <p>Thanks to <a href="https://www.reddit.com/r/Seaofthieves/comments/8715ud/updated_merchant_cheatsheet/">Mickeychr</a> and <a href="https://seaofthieves.gamepedia.com/Locations">Sea of Theives Wiki</a>.</p>
+  </footer>
+
+</body>
+
+
+
+<script src="/javascripts/graph.js" charset="utf-8"></script>
+<script src="/javascripts/table.js" charset="utf-8"></script>
+
+</html>
