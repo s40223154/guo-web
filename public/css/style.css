@@ -16,6 +16,7 @@ img {
 
 #chart {
   width: 100%;
+  height: 500px;// 50vh, em
   margin-top: 30px;
 }
 @import url(https://fonts.googleapis.com/css?family=Oswald:400|Raleway:400,700,400italic,700italic);
@@ -51,7 +52,7 @@ table th {
   outline: none;
   padding-right: 2em;
   text-align: left;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   transition: color 0.2s ease-in-out;
 }
 
