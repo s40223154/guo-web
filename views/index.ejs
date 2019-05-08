@@ -2,76 +2,94 @@
 <html>
 
 <head>
-  <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css' /> -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.1/js/jquery.tablesorter.min.js" charset="utf-8"></script>
-  </script>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/css/style.css' />
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css' />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js'></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.1/js/jquery.tablesorter.min.js" charset="utf-8"></script>
+    </script>
+    <style media="screen">
+        .c3-axis-y text {
+            fill: white;
+            font-size: 12px;
+        }
+
+        .c3-axis-x text {
+            font-size: 12px;
+            fill: white;
+        }
+
+        .c3 .c3-axis-x path,
+        .c3 .c3-axis-x line {
+            stroke: white; //stroke: none; – hides axis , color is customizable either using the color name or Hex code.
+        }
+
+        .c3 .c3-axis-y path,
+        .c3 .c3-axis-y line {
+            stroke: white; //stroke: none; – hides axis , color is customizable either using the color name or Hex code.
+        }
+    </style>
 </head>
 <!--
 html, js, css
 -->
 
 <body>
-  <div id="chart"></div>
-  <main>
+    <div id="chart"></div>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th><span style="text-transform:capitalize;">FeCO2(%)</span></th>
+                    <th><span style="text-transform:capitalize;">FeO2(%)</span></th>
+                    <th><span style="text-transform:capitalize;">VE(L/Min)</span></th>
+                    <th><span style="text-transform:lowercase;">t</span></th>
+                    <th><span style="text-transform:capitalize;">VO2(%)</span></th>
+                    <th><span style="text-transform:capitalize;">VCO2(%)</span></th>
+                </tr>
+            </thead>
+            <tbody id="table-data">
 
-      <h1>Sea of Thieves Cheatsheet</h1>
-
-      <table>
-          <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Grid</th>
-                  <th>Type</th>
-                  <th>Region</th>
-                  <th>Chickens</th>
-                  <th>Pigs</th>
-                  <th>Snakes</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td data-label="Name">
-                      Ancient Spire Outpost
-                  </td>
-                  <td data-label="Grid">
-                      V-21
-                  </td>
-                  <td data-label="Type">
-                      Outpost
-                  </td>
-                  <td data-label="Region">
-                      The Ancient Isles
-                  </td>
-                  <td data-label="Chickens">
-                      <span class="no">&#10007;</span>
-                  </td>
-                  <td data-label="Pigs">
-                      <span class="no">&#10007;</span>
-                  </td>
-                  <td data-label="Snakes">
-                      <span class="no">&#10007;</span>
-                  </td>
-              </tr>
-
-          </tbody>
-      </table>
-
-  </main>
-
-  <footer>
-      <p>Thanks to <a href="https://www.reddit.com/r/Seaofthieves/comments/8715ud/updated_merchant_cheatsheet/">Mickeychr</a> and <a href="https://seaofthieves.gamepedia.com/Locations">Sea of Theives Wiki</a>.</p>
-  </footer>
-
+            </tbody>
+        </table>
+    </main>
 </body>
 
+<script>
+    var i = 0;
+    setInterval(function() {
+        i++;
+        $('#table-data').prepend(
+            `
+            <tr>
+                <td data-label="FeCO2">
+                    3.88
+                </td>
+                <td data-label="FeO2">
+                    16.66
+                </td>
+                <td data-label="Flow">
+                    9.1
+                </td>
+                <td data-label="t">
+                    00.03
+                </td>
+                <td data-label="VO2">
+                    <span class="no">&#10007;</span>
+                </td>
+                <td data-label="VCO2">
+                    <span class="no">&#10007;</span>
+            </tr>
+        `
+        );
+    }, 1000);
+</script>
 
-
-<script src="/javascripts/graph.js" charset="utf-8"></script>
-<script src="/javascripts/table.js" charset="utf-8"></script>
+<script src="/js/graph.js" charset="utf-8"></script>
+<script src="/js/table.js" charset="utf-8"></script>
 
 </html>
