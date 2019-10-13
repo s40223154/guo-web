@@ -15,74 +15,84 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 var chart = c3.generate({
-  data: {
-    x: 'x',
-    columns: [
-      ['x', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13 ,14,15,16,17,18,19],
-      ['VCO2', 0,0,0,0,0,0,0,0,0,0,0,0],
-      ['VO2'],
-      ['VE']
-    ],
-    axes: {
-      data1: 'VO2',
-      data2: 'VCO2'
-    },
-    colors: {
-      VCO2: '#10e610',
-      VO2: '#ff0000',
-      VE: '#0000ff'
-    },
-    type: 'spline',
-    labels: true
-  },
-  axis: {
-    x: {
-      type: 'category',
-      categories: ['adsa', 'das']
-    },
-    y: {
-      tick: {
-        format: function(x) {
-          return x % 1 === 0 ? x : '';
-        }
+    bindto: '#chart',
+    data: {
+      columns: [
+        ['VO2', ''],
+        ['VE', ''],
+        ['org_time', '']
+      ],
+      axes: {
+        VE: 'y2' // ADD
       }
     },
-    y2: {
-      show: true
+    axis: {
+      y2: {
+        show: true // ADD
+      }
     }
-  }
 });
 
-var i = -1;
-var org_time = ['x', 0,1];
-var co2 = ['VCO2', getRandomArbitrary(0.03, 6)];
-var o2 = ['VO2', getRandomInt(16, 21), getRandomInt(19, 20), getRandomInt(19, 21), getRandomInt(19, 20), getRandomInt(18, 21), getRandomInt(19, 22), getRandomInt(19, 21), getRandomInt(19, 20), getRandomInt(19, 21), getRandomInt(19, 20), getRandomInt(18, 21), getRandomInt(19, 22)];
-var ve = ['VE', getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15), getRandomInt(5, 15)];
+// table
+let fackData = [{
+  red: 1,
+  blue: 1
+},{
+  red: 2,
+  blue: 2
+},{
+  red: 3,
+  blue: 3
+}];
+
+// graph config
+
+var i = 0;
+var org_time = ['x', 0, 1];
+var o2 = ['VO2', 0];
+var ve = ['VE', 0];
 
 setInterval(function() {
+  console.log('update');
+  // update table
+    $('#table-data').prepend(
+        `
+        <tr>
+            <td data-label="FeO2">${fackData[i].red}</td>
+            <td data-label="Flow">${fackData[i].blue}  </td>
+            <td data-label="t">
+                00.03
+            </td>
+            <td data-label="VO2">
+                <span class="no">&#10007;</span>
+            </td>
+        </tr>
+    `
+    );
+
+  // update graph
+  if (o2.length > 10) {
+    o2.splice(1, 1);
+  }
+  o2.push(fackData[i].red);
+  if (ve.length > 10) {
+    ve.splice(1, 1);
+  }
+  ve.push(fackData[i].blue);
+
   chart.load({
     columns: [
       org_time,
-      co2,
       o2,
       ve
-    ],
-    axis: {
-      x: {
-        categories: ['adsa', 'das', 'adsa', 'das', 'adsa', 'das', 'adsa', 'das']
-      }
-    }
-  })
-  if (co2.length > 32) {
-    co2.splice(1, 1);
-  }
-  co2.push(getRandomInt(0.03, 6));
+    ]
+  });
+
   if (org_time.length > 32) {
     org_time.splice(1, 1);
-
-    i++;
   }
 
   org_time.push(i);
-  console.log(i);
+
+  i++;
 }, 1000);

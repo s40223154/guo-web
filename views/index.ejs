@@ -20,11 +20,6 @@
       font-size: 16px;
     }
 
-    .c3-axis-y2 text {
-      fill: green;
-      font-weight: bold;
-      font-size: 16px;
-    }
 
     .c3-axis-x text {
       font-size: 16px;
@@ -42,12 +37,6 @@
       font-weight: bold;
       stroke: rgba(207, 45, 45, 0.86); //stroke: none; – hides axis , color is customizable either using the color name or Hex code.
     }
-
-    .c3 .c3-axis-y2 path,
-    .c3 .c3-axis-y2 line {
-      font-weight: bold;
-      stroke: green; //stroke: none; – hides axis , color is customizable either using the color name or Hex code.
-    }
     </style>
 </head>
 <!--
@@ -60,49 +49,32 @@ html, js, css
         <table>
             <thead>
                 <tr>
-                    <th>FeCO2(%)</th>
                     <th>FeO2(%)</th>
                     <th>Flow(L/min)</th>
                     <th>t(s)</th>
                     <th>VO2(%)</th>
-                    <th>VCO2(%)</th>
                 </tr>
             </thead>
             <tbody id="table-data">
-
+                <% datas.forEach((data) => { %>
+                  <% for(i=0; i<data.red.length; i++) { %>
+                    <tr>
+                        <td data-label="FeO2"><%= data.green[0] %></td>
+                        <td data-label="Flow">---</td>
+                        <td data-label="t">---</td>
+                        <td data-label="VO2">
+                            <span class="no">&#10007;</span>
+                        </td>
+                    </tr>
+                  <% } %>
+                <% }) %>
             </tbody>
         </table>
     </main>
 </body>
 
 <script>
-    var i = 0;
-    setInterval(function() {
-        i++;
-        $('#table-data').prepend(
-            `
-            <tr>
-                <td data-label="FeCO2">
-                    3.88
-                </td>
-                <td data-label="FeO2">
-                    16.66
-                </td>
-                <td data-label="Flow">
-                    9.1
-                </td>
-                <td data-label="t">
-                    00.03
-                </td>
-                <td data-label="VO2">
-                    <span class="no">&#10007;</span>
-                </td>
-                <td data-label="VCO2">
-                    <span class="no">&#10007;</span>
-            </tr>
-        `
-        );
-    }, 1000);
+
 </script>
 
 <script src="/js/graph.js" charset="utf-8"></script>
