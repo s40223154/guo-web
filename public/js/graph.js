@@ -18,9 +18,8 @@ var chart = c3.generate({
     bindto: '#chart',
     data: {
       columns: [
-        ['VO2', ''],
+        ['FeO2', ''],
         ['VE', ''],
-        ['org_time', '']
       ],
       axes: {
         VE: 'y2' // ADD
@@ -906,8 +905,8 @@ let fakeDate = [{blue:0.06,red:21.0211},
 // graph config
 
 var i = 0;
-var org_time = ['x', 0, 1];
-var o2 = ['VO2', 0];
+// var org_time = ['x', 0, 1];
+var o2 = ['FeO2', 0];
 var ve = ['VE', 0];
 
 setInterval(function() {
@@ -918,9 +917,7 @@ setInterval(function() {
         <tr>
             <td data-label="FeO2">${fakeDate[i].red}</td>
             <td data-label="Flow">${fakeDate[i].blue}  </td>
-            <td data-label="t">
-                00.03
-            </td>
+            <td data-label="t">00.03</td>
             <td data-label="VO2">
                 <span class="no">&#10007;</span>
             </td>
@@ -940,7 +937,6 @@ setInterval(function() {
 
   chart.load({
     columns: [
-      org_time,
       o2,
       ve
     ]
